@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>CleanArchitectureMVC.Infra.Data</AssemblyName>
+    <RootNamespace>CleanArchitectureMVC.Infra.Data</RootNamespace>
+  </PropertyGroup>
+
+</Project>
