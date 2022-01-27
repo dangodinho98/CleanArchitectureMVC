@@ -3,6 +3,7 @@ using CleanArchitectureMVC.Application.DTOs;
 using CleanArchitectureMVC.Application.Interfaces;
 using CleanArchitectureMVC.Domain.Entities;
 using CleanArchitectureMVC.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -14,7 +15,9 @@ namespace CleanArchitectureMVC.Application.Services
         private readonly IMapper _mapper;
         public CategoryService(ICategoryRepository categoryRepository, IMapper mapper)
         {
-            _categoryRepository = categoryRepository;
+            _categoryRepository = categoryRepository ??
+                          throw new ArgumentNullException(nameof(categoryRepository));
+            
             _mapper = mapper;
         }
 

@@ -9,7 +9,8 @@ namespace CleanArchitectureMVC.Infra.Data.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        private ApplicationDbContext _productContext;
+        private readonly ApplicationDbContext _productContext;
+
         public ProductRepository(ApplicationDbContext context)
         {
             _productContext = context;
@@ -24,14 +25,8 @@ namespace CleanArchitectureMVC.Infra.Data.Repositories
 
         public async Task<Product> GetByIdAsync(int? id)
         {
-            return await _productContext.Products.FindAsync(id);
-        }
-
-        public async Task<Product> GetProductCategoryAsync(int? id)
-        {
-            //eager loading
             return await _productContext.Products.Include(c => c.Category)
-                .SingleOrDefaultAsync(p => p.Id == id);
+                        .SingleOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<IEnumerable<Product>> GetProductsAsync()
