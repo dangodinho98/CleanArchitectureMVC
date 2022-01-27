@@ -7,7 +7,6 @@ namespace CleanArchitectureMVC.WebUI.Controllers
     public class ProductsController : Controller
     {
         private readonly IProductService _productService;
-
         public ProductsController(IProductService productAppService)
         {
             _productService = productAppService;
